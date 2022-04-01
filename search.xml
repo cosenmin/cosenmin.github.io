@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>黑群晖NAS之私人影院篇</title>
+    <url>/2021/01/10/2021-1-10%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E4%BA%BA%E5%BD%B1%E9%99%A2%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="在黑群晖nas主机上搭建自己的一个私人影院，可以分享视频。"><a href="#在黑群晖nas主机上搭建自己的一个私人影院，可以分享视频。" class="headerlink" title="在黑群晖nas主机上搭建自己的一个私人影院，可以分享视频。"></a>在黑群晖nas主机上搭建自己的一个私人影院，可以分享视频。</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><hr>
+<h2 id="前置套件"><a href="#前置套件" class="headerlink" title="前置套件"></a>前置套件</h2><h3 id="·-Video-Station"><a href="#·-Video-Station" class="headerlink" title="· Video Station"></a>· Video Station</h3><hr>
+<h1 id="一、Video-station的安装和使用"><a href="#一、Video-station的安装和使用" class="headerlink" title="一、Video station的安装和使用"></a>一、Video station的安装和使用</h1><h2 id="1-群辉系统的安装"><a href="#1-群辉系统的安装" class="headerlink" title="1.群辉系统的安装"></a>1.群辉系统的安装</h2><p>首先点开套件中心，搜索video station下载。</p>
+<p>1</p>
+<p>然后点击电影，选择你放电影的目录，添加进去</p>
+<p>2</p>
+<p>这时，右边就会出现你添加的电影，不过还没有封面和电影信息，这部分下一节会讲。</p>
+<p>如果需要分享电影链接，只需点击你需要分享的影片的右下角菜单，然后点击共享链接即可。</p>
+<p>3</p>
+<p>4</p>
+<p>如果你需要分享几个视频，需要随便点击一个影片的左下角+号，然后创建一个播放列表，然后将需要分享的影片加入到这个播放列表</p>
+<p>5</p>
+<p>紧接着点击播放列表菜单栏查看，右键播放列表分享即可</p>
+<p>6</p>
+<p>7</p>
+<p>注意，分享出去的时候别人打开会默认播放第一个视频，这是需要点击播放列表即可查看其他视频。</p>
+<p>8</p>
+<h2 id="2-手机安卓端的安装"><a href="#2-手机安卓端的安装" class="headerlink" title="2.手机安卓端的安装"></a>2.手机安卓端的安装</h2><p>进入<a href="https://www.synology.cn/zh-cn/support/download/DS918+#androids">群晖官网下载中心</a>下载DS video。</p>
+<p>9</p>
+<p>下载完后群晖NAS的ip或域名地址，然后输入账号密码登录上去</p>
+<p>10</p>
+<p>其他操作就和电脑上的群晖nas差不多了，这里不做过多的阐述</p>
+<h2 id="3-电视TV版的安装"><a href="#3-电视TV版的安装" class="headerlink" title="3.电视TV版的安装"></a>3.电视TV版的安装</h2><p>进入<a href="https://www.synology.cn/zh-cn/support/download/DS918+#androids">群晖官网下载中心</a>下载DS video（Android TV）。</p>
+<p>11</p>
+<p>这里笔者家的电视是TCL电视，可以通过u盘和里面的电脑管家直接安装apk应用。</p>
+<p>12</p>
+<p>一般安装完成后电视上不会显示DS video，这时还需要在电脑上装DSVideoGo。</p>
+<p><a href="https://nas.minkeren.com:5001/sharing/UFbm79ePX">DSVideoGo下载</a></p>
+<p>安装完成后直接使用即可。</p>
+<h1 id="二、Video-station中TMDB插件的安装和使用"><a href="#二、Video-station中TMDB插件的安装和使用" class="headerlink" title="二、Video station中TMDB插件的安装和使用"></a>二、Video station中TMDB插件的安装和使用</h1><p>现在虽然可以在网上、电视和手机直接看库中的电影了，但好像还是缺少了点什么，毕竟是影院，还缺少电影的视频信息，如下图</p>
+<p>13</p>
+<p>这里就需要使用Video station中TMDB插件来在各大影评网站上自动削刮电影信息了。</p>
+<p>首先需要在TMDB官网获取其密钥</p>
+<p><a href="https://www.themoviedb.org/">官网网址</a></p>
+<p>进入官网后首先是注册环节</p>
+<p>按照正常的流程注册后登录界面如下</p>
+<p>14</p>
+<p>然后点击右上角个人中心，点击设置进去，选择API</p>
+<p>15</p>
+<p>在API Key里面创建一个API，创建完成后将获得一个API，将它记住。</p>
+<p>16</p>
+<p>然后需要修改群晖的Hosts，首先利用putty或者xshell与群晖主机建立ssh通信</p>
+<p>17</p>
+<p>然后输入指令<code>sudo -i</code>获取root用户权限，接着输入</p>
+<pre><code>vi /etc/hosts
+</code></pre>
+<p>添加其中内容如下</p>
+<p>18</p>
+<pre><code>13.224.161.90 api.themoviedb.org
+</code></pre>
+<p>最后在video station里的设置-&gt;高级选项卡中，启动TMDB，并输入之前的密钥</p>
+<p>19</p>
+<p>到这里就已经设置成功了，TMDB会根据文件名自动搜刮影片，如图所示</p>
+<p>20</p>
+<p>如果没有搜刮到，可以进行手动操作，点击要编辑的视频右下角，选中编辑视频信息，点击搜索Internet进行自行搜索</p>
+<p>21</p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><hr>
+]]></content>
+      <categories>
+        <category>家庭主机</category>
+      </categories>
+      <tags>
+        <tag>蜗牛星际J1900</tag>
+        <tag>黑群晖NAS</tag>
+        <tag>Video Station</tag>
+        <tag>TMDB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>群晖NAS搭建游戏服务器--DNF篇</title>
+    <url>/2021/01/14/2021-1-14%20%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--DNF%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="利用群晖NAS和公网ip搭建一个可以邀请外网的小伙伴来玩的DNF服务器"><a href="#利用群晖NAS和公网ip搭建一个可以邀请外网的小伙伴来玩的DNF服务器" class="headerlink" title="利用群晖NAS和公网ip搭建一个可以邀请外网的小伙伴来玩的DNF服务器"></a>利用群晖NAS和公网ip搭建一个可以邀请外网的小伙伴来玩的DNF服务器</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-17</p>
+<p>更新内容：<br>1.局域网连接不上数据库的解决办法<br>2.拍卖行开启方法<br>3.新增GM工具、物品代码获取工具、数据库工具</p>
+<hr>
+<hr>
+<h2 id="读前须知"><a href="#读前须知" class="headerlink" title="读前须知"></a>读前须知</h2><h3 id="1-首先你得有一个公网ip，不管是不是会改变的。"><a href="#1-首先你得有一个公网ip，不管是不是会改变的。" class="headerlink" title="1. 首先你得有一个公网ip，不管是不是会改变的。"></a>1. 首先你得有一个公网ip，不管是不是会改变的。</h3><h3 id="2-本教程提到的所有文件："><a href="#2-本教程提到的所有文件：" class="headerlink" title="2. 本教程提到的所有文件："></a>2. 本教程提到的所有文件：</h3><p><a href="https://pan.baidu.com/s/1KH-yRRMl-_wqXaIZR_78mw">百度云链接</a> 提取码： yzkx</p>
+<p><a href="">私有云链接</a> 内部使用</p>
+<h3 id="3-由于作者太懒，以下一些截图是从网上截来的，可能不准确，请读者尽量配合文字说明一起食用，毕竟文字都是作者一字字码的。"><a href="#3-由于作者太懒，以下一些截图是从网上截来的，可能不准确，请读者尽量配合文字说明一起食用，毕竟文字都是作者一字字码的。" class="headerlink" title="3.由于作者太懒，以下一些截图是从网上截来的，可能不准确，请读者尽量配合文字说明一起食用，毕竟文字都是作者一字字码的。"></a>3.由于作者太懒，以下一些截图是从网上截来的，可能不准确，请读者尽量配合文字说明一起食用，毕竟文字都是作者一字字码的。</h3><hr>
+<h1 id="一、群晖NAS中安装-centos5-8"><a href="#一、群晖NAS中安装-centos5-8" class="headerlink" title="一、群晖NAS中安装 centos5.8"></a>一、群晖NAS中安装 centos5.8</h1><h2 id="1-安装Virtual-Machine-Manager"><a href="#1-安装Virtual-Machine-Manager" class="headerlink" title="1.安装Virtual Machine Manager"></a>1.安装Virtual Machine Manager</h2><p>打开群晖套件中心，搜索’vir’，安装Virtual Machine Manager套件。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/1.md.png" alt="1"></p>
+<h2 id="2-安装映像文件"><a href="#2-安装映像文件" class="headerlink" title="2.安装映像文件"></a>2.安装映像文件</h2><p>打开Virtual Machine Manager套件，配置好后点击映像-&gt;新增，将你的iso文件添加到映像文件中。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/2.md.png" alt="2"></p>
+<p>然后在虚拟机中点击新增，选中Linux</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/3.md.png" alt="3"></p>
+<p>根据你的内存大小配置，一般2h2g差不多</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/4.md.png" alt="4"></p>
+<p>配置虚拟硬盘大小，一般30G够用</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/5.md.png" alt="5"></p>
+<p>网络直接默认，其他设置里面启动ios文件选择4G那个，其他iso文件不用管，自动自动设置为是。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/6.md.png" alt="6"></p>
+<p>然后是选择一个账户</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/7.md.png" alt="7"></p>
+<p>接着直接默认然后点击应用就可以了</p>
+<h2 id="3-安装centos-5-8"><a href="#3-安装centos-5-8" class="headerlink" title="3.安装centos 5.8"></a>3.安装centos 5.8</h2><p>安装完成后，先不着急开机，如果已经开机，可点击关机或者强制关机让它进入关机状态，紧接着选中虚拟机，点击操作-&gt;编辑-&gt;存储-&gt;设置</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/8.md.png" alt="8"></p>
+<p>然后将虚拟盘控制器设置为IDE控制器。</p>
+<p><a href="https://nas.minkeren.com:8001/image/1EXX"><img src="https://nas.minkeren.com:8001/images/2021/01/14/9.md.png" alt="9.md.png"></a></p>
+<p>设置完成后，可以点击连接即可启动centos5.8系统，初次启动会进入centos5.8的安装步骤。</p>
+<p>这个页面直接按Enter过</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/10.md.png" alt="10"></p>
+<p>这里直接选择Skip按空格跳过</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/11.md.png" alt="11"></p>
+<p>然后进入安装界面</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/12.md.png" alt="12"></p>
+<p>首先是语言，选择简体中文，然后软键盘选择美国英语式，点下一步的时候选择是</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/13.md.png" alt="13"></p>
+<p>这里选择的是最下面的用户自定义分区，注：不是图片这个！！！选择然后进入分区的挂载，其挂载的大小大概如下分配（这里笔者暂时没找到图，只能口述,其实最重要的是&#x2F;和swap，另外两个好像可以不要）</p>
+<p>‘&#x2F;‘—20000</p>
+<p>‘home’—5000</p>
+<p>‘swap’—4000</p>
+<p>‘boot’—200</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/14.md.png" alt="14"></p>
+<p>紧接着是选择网络、选择时区、设置root密码，这些都直接下一步。然后来到图形界面设置，类似下图，不过这里笔者用winSCP和putty进行连接和文件操作，就不需要图形界面，所以用箭头那四个选项都不要选！！！</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/15.md.png" alt="15"></p>
+<p>然后等待安装完成重启即可使用centos5.8了</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/16.md.png" alt="16"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="二、安装DNF服务端"><a href="#二、安装DNF服务端" class="headerlink" title="二、安装DNF服务端"></a>二、安装DNF服务端</h1><h2 id="1-使用putty和winscp连接你的centos"><a href="#1-使用putty和winscp连接你的centos" class="headerlink" title="1.使用putty和winscp连接你的centos"></a>1.使用putty和winscp连接你的centos</h2><p>使用网页连接进入centos，输入密码后可输入命令<code>ifconfig</code>来查看centos在局域网中的ip地址。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/17.md.png" alt="17"></p>
+<p>然后为了避免不必要的麻烦，我们可以通过putty和winscp连接centos5.8来进行命令输入和文件传输。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/18.md.png" alt="18"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/19.md.png" alt="19"></p>
+<p>首先，putty运行一下命令关闭防火墙：</p>
+<pre><code>chkconfig iptables off
+service iptables stop
+setenforce 0
+</code></pre>
+<h2 id="2-替换CentOS-Base-repo文件"><a href="#2-替换CentOS-Base-repo文件" class="headerlink" title="2.替换CentOS-Base.repo文件"></a>2.替换CentOS-Base.repo文件</h2><p>由于centos5版本太旧，原本网易的镜像库都已经失效了，因此需要修改CentOS-Base.repo文件，在文件夹repo里面，有分别国外和清华两个选项，这里最好选清华，因为下载很快。</p>
+<p>打开winscp，进入到&#x2F;etc&#x2F;yum.repos.d目录下，替换CentOS-Base.repo。</p>
+<h2 id="3-启动一键安装服务端"><a href="#3-启动一键安装服务端" class="headerlink" title="3.启动一键安装服务端"></a>3.启动一键安装服务端</h2><p>将一键端的5个文件放在根目录</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/20.md.png" alt="20"></p>
+<p>putty运行命令:</p>
+<pre><code>cd /;chmod -R 0777 /install2;./install2
+</code></pre>
+<p>运行后首先会下载国外的源，30~90分钟不等，然后开始根据提示安装即可。</p>
+<h2 id="4-检查ip是否为外网ip"><a href="#4-检查ip是否为外网ip" class="headerlink" title="4.检查ip是否为外网ip"></a>4.检查ip是否为外网ip</h2><p>首先找到&#x2F;home&#x2F;neople&#x2F;channel&#x2F;cfg下的channel.cfg，将this_ip改为你的外网ip。</p>
+<p>然后找到&#x2F;home&#x2F;neople&#x2F;game&#x2F;cfg里面的siroco01.cfg、siroco11.cfg（游戏频道）和siroco52.cfg（决斗场频道），将里面的如下选项改为你的外网ip。</p>
+<pre><code>ip
+udp_ip_of_hades
+ipg_ip
+nxj_ipg_ip
+relay_ip
+stun_ip
+stun_ip
+stun_ip
+</code></pre>
+<p>然后在路由器里面映射如下端口</p>
+<pre><code>7000-7001
+10006-10031
+31003
+9006
+7200
+2311-2313
+11006-11031
+10315
+11315
+</code></pre>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/21.md.png" alt="21"></p>
+<h2 id="5-上传pvf、等级补丁和公钥到"><a href="#5-上传pvf、等级补丁和公钥到" class="headerlink" title="5.上传pvf、等级补丁和公钥到"></a>5.上传pvf、等级补丁和公钥到</h2><p>上传目录：&#x2F;home&#x2F;neople&#x2F;game</p>
+<p>pvf–游戏的版本文件</p>
+<p>等级补丁–角色最高等级</p>
+<p>公钥–登录器识别（这里用的是统一登录器）</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/22.md.png" alt="22"></p>
+<p>上传完成后putty运行命令:</p>
+<pre><code>cd /root
+./run 启动服务器（几分钟）
+</code></pre>
+<p>等到跑出四国为止。若想关闭服务器，只需输入两次<code>./stop</code>即可。</p>
+<h2 id="6-统一登录器网关配置"><a href="#6-统一登录器网关配置" class="headerlink" title="6.统一登录器网关配置"></a>6.统一登录器网关配置</h2><p>首先，需要上传libmysqlclient.so.15到 usr&#x2F;lib64下。</p>
+<p>然后啊，将网关配置文件放到root&#x2F;下，右键设置权限为0777。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/23.md.png" alt="23"></p>
+<p>完成后，只需要输入<code>./GateRestart</code>重启网关即可。</p>
+<p>Config.ini里面的ConnectKey必须与统一登录器的通讯密钥一致。</p>
+<h1 id="三、客户端配置"><a href="#三、客户端配置" class="headerlink" title="三、客户端配置"></a>三、客户端配置</h1><h2 id="1-安装客户端"><a href="#1-安装客户端" class="headerlink" title="1.安装客户端"></a>1.安装客户端</h2><p>解压那四个压缩包到dxf70目录即可</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/24.md.png" alt="24"></p>
+<h2 id="2-配置登录器"><a href="#2-配置登录器" class="headerlink" title="2.配置登录器"></a>2.配置登录器</h2><p>首先，将统一登录器5.4客户端补丁中的所有文件覆盖到dxf70目录下。</p>
+<p>然后，打开统一网关在线管理工具v5.4，在游戏地址和网关地址上填上你的公网ip，然后点击生成登录器，并将生成的登录放到dxf70目录下。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/25.md.png" alt="25"></p>
+<p>注意：网关设置的通信密钥和登录器设置里面的通信密钥要相同。</p>
+<p>然后在网关设置-&gt;网关地址里面填上你的centos的局域网ip，其他不变，然后点击连接。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/26.md.png" alt="26"></p>
+<p>连接之后点击实用工具-&gt;打开文件，选择你的pvf进行，点击获取当前密码-&gt;生成随机密码-&gt;设置密码生效进行加密，最后点击文件加密生成一个对应加密的pvf，将这个pvf放到dxf70目录。</p>
+<p>为什么不能直接放pvf？因为统一登录器客户端直接放pvf会启动失败，必须放加密的。</p>
+<p>完成后运行统一登录器，注册账号后点击进入游戏即可开始愉快地玩耍了。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/14/27.md.png" alt="27"></p>
+<p>注意：win10直接点击登录，win7要右键管理员运行登录器。</p>
+<h1 id="四、数据库配置"><a href="#四、数据库配置" class="headerlink" title="四、数据库配置"></a>四、数据库配置</h1><p>如果出现能进去游戏也能玩，但就是GM工具怎么也连接不上的只能通过Navicat的ssh才能连接上，如下图所示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/28.md.png" alt="28"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/29.md.png" alt="29"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/30.md.png" alt="30"></p>
+<p>那么，解决方法是进入lampp的mysql数据库（一键端自带的mysql），新增一个授权了本机ip的账户，在本机上用该账户登录即可，具体步骤如下</p>
+<p>首先，利用winscp进入192.168.101.110虚拟机，找到文件&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;my.cnf，在[mysqld]下面添加一行skip-grant-tables内容如图：（表示不用密码登录数据库，设置好后删除即可）</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/31.md.png" alt="31"></p>
+<p>修改完后输入&#x2F;opt&#x2F;lampp&#x2F;lampp restart进行mysql的重启。</p>
+<p>然后输入命令&#x2F;opt&#x2F;lampp&#x2F;bin&#x2F;mysql -ugame -p  登录你的game账户（如果第1步添加了代码，这里直接按enter就能进去，没添加就要输入uu5!^%jg进去）</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/32.md.png" alt="32"></p>
+<p>接着依次输入以下代码可以查看数据库的内容、user、host表</p>
+<pre><code>    use mysql;
+    show databases;
+    select host,user from user;
+</code></pre>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/33.md.png" alt="33"></p>
+<p>输入 flush privileges;刷新权限表</p>
+<p>输入grant all privileges on <em>.</em>  to ‘新用户名‘@’需要连接电脑的ip’ identified by ‘新密码’ with grant option;创建一个新的用户名密码账户</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/34.md.png" alt="34"></p>
+<p>然后输入select host,user from user;查看</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/35.md.png" alt="35"></p>
+<p>账户算是创建好了，接着可以回到第一步将skip-grant-tables注释掉或者删除（毕竟没密码不安全）<br>最后ctrl+c退出mysql重启<br>&#x2F;opt&#x2F;lampp&#x2F;lampp restart</p>
+<p>然后用新账号密码完美登录</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/21/36.md.png" alt="36"></p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><h3 id="1-win10无法组队的问题。"><a href="#1-win10无法组队的问题。" class="headerlink" title="1.win10无法组队的问题。"></a>1.win10无法组队的问题。</h3><p>下载一个uu加速器，选择加速dnf，将两台电脑设置到统一节点即可组队。</p>
+<h3 id="2-客户端点进入游戏会闪退。"><a href="#2-客户端点进入游戏会闪退。" class="headerlink" title="2.客户端点进入游戏会闪退。"></a>2.客户端点进入游戏会闪退。</h3><p>win7的话把所有杀毒软件都关了，win10的话左下角搜索’病毒和威胁防护’-&gt;病毒和威胁防护设置-&gt;管理设置-&gt;关闭实时防护，或者排除项-&gt;添加或删除排除项,将整个客户端文件包括进去即可。</p>
+<h3 id="3-开启拍卖行的方法"><a href="#3-开启拍卖行的方法" class="headerlink" title="3.开启拍卖行的方法"></a>3.开启拍卖行的方法</h3><p>打开Navicat连接数据库，进入表xxx中，复制xxx和xxx两份表（仅复制结构），然后更改日期和系统日期相同。</p>
+<p>系统日期的更改方法：</p>
+<hr>
+]]></content>
+      <categories>
+        <category>游戏服务器</category>
+      </categories>
+      <tags>
+        <tag>VMM虚拟机</tag>
+        <tag>centos 5.8</tag>
+        <tag>一键服务端</tag>
+        <tag>客户端</tag>
+        <tag>统一登录器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Github上搭建个人博客--主题篇</title>
+    <url>/2021/01/07/2021-1-7%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E4%B8%BB%E9%A2%98%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="在Hexo搭建的博客上引入yilia主题"><a href="#在Hexo搭建的博客上引入yilia主题" class="headerlink" title="在Hexo搭建的博客上引入yilia主题"></a>在Hexo搭建的博客上引入yilia主题</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：<br>1.增加了fontwaesome下载链接；<br>2.增加了图片说明。</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><p><a href="/2021/01/06/2021-1-6%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E5%9F%BA%E7%A1%80%E7%AF%87/">如何在Github上搭建个人博客–基础篇</a></p>
+<hr>
+<h1 id="一、安装yilia主题"><a href="#一、安装yilia主题" class="headerlink" title="一、安装yilia主题"></a>一、安装yilia主题</h1><p>安装主题很简单，只需要在博客根目录下右键打开Git Bash，然后输入以下代码即可安装。</p>
+<pre><code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
+</code></pre>
+<p>安装完成后你的themes文件夹里会多出一个yilia目录，这就是主题目录了，下面对目录中的一些需要用到的文件或文件夹做简单的解释：</p>
+<pre>
+_config.yml                主题配置
+\layout                    主题布局目录
+    categories.ejs            分类界面布局
+    tag.ejs                标签界面布局
+    archive                归档界面布局
+    \_partial
+        article.ejs        文章布局
+        footer.ejs        页脚布局
+        left-col.ejs        个人信息界面布局
+        \post
+            word.ejs    自定义的文章布局
+\source                    主题源码目录
+</pre>
+
+<p>了解之后下面就可以开始主题编辑了，每次编辑后如果本地预览的话可以在博客根目录的Git Bash里面输入以下代码，然后即可在浏览器中输入<a href="http://localhost:4000/%E6%9F%A5%E7%9C%8B%EF%BC%8C%E7%9C%8B%E5%AE%8C%E5%90%8E%E8%AE%B0%E5%BE%97ctrl">http://localhost:4000/查看，看完后记得ctrl</a> + c取消。</p>
+<pre><code> (hexo clean;hexo g;hexo s)    
+</code></pre>
+<p>如果要部署到github或者gitee上，可以输入以下代码进行部署：</p>
+<pre><code> (hexo clean;hexo g;hexo d)    
+</code></pre>
+<h1 id="二、整体配置"><a href="#二、整体配置" class="headerlink" title="二、整体配置"></a>二、整体配置</h1><h2 id="1-名字、签名"><a href="#1-名字、签名" class="headerlink" title="1.名字、签名"></a>1.名字、签名</h2><p>打开主题配置文件，在# Header和menu:之间插入以下代码：</p>
+<pre>
+author: 作者名字
+subtitle: 作者签名
+</pre>
+
+<h2 id="2-头像、网页图标"><a href="#2-头像、网页图标" class="headerlink" title="2.头像、网页图标"></a>2.头像、网页图标</h2><p>准备好一张.png的图片，不要太大，几十k就可以了。</p>
+<p>然后在博客根目录下创建文件夹source\assets\blogImg，将你的头像放进去。</p>
+<p>接着在你的主题配置文件里面搜索avatar，将你的路径和图片放进去，如下所示：</p>
+<pre>
+#注意: 冒号后面留一个空格
+avatar:  /assets/blogImg/图片名字.png    
+</pre>
+<p>图标也是同理，不过图标文件一般是16x16或者32x32的，记得修改大小，代码如下所示:</p>
+<pre>
+#注意: 冒号后面留一个空格
+favicon:  /assets/img/图标名字.png
+</pre>
+
+<h2 id="3-在页尾显示博客的访问总量、访问数"><a href="#3-在页尾显示博客的访问总量、访问数" class="headerlink" title="3.在页尾显示博客的访问总量、访问数"></a>3.在页尾显示博客的访问总量、访问数</h2><p>首先，要实现计数功能，要添加卜算子计数插件，打开页脚布局文件footer.ejs，在最后添加以下一行代码：</p>
+<pre><code>&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>然后继续在footer.ejs文件中，在其中间添加以下两行代码：</p>
+<pre><code>&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt; 总访问量: &lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt; /&lt;/span&gt;
+&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt; 访客数:&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+</code></pre>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1062cbb49a4290228.md.png" alt="图1"></p>
+<p>完成后重新部署即可，效果展示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/28d89731f35f5e617.th.png" alt="图2"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/34ff7c40728f8b90d.md.png" alt="图3"></p>
+<p>本地查看的时候访问量可能显示异常，别担心，放到远程仓库就好了。</p>
+<h1 id="二、文章配置"><a href="#二、文章配置" class="headerlink" title="二、文章配置"></a>二、文章配置</h1><h2 id="1-字数统计、阅读时长、阅读量"><a href="#1-字数统计、阅读时长、阅读量" class="headerlink" title="1.字数统计、阅读时长、阅读量"></a>1.字数统计、阅读时长、阅读量</h2><p>由于前面已经填了卜算子，这里就不需要再添加了。</p>
+<p>首先，在\layout_partial\post文件夹中新建一个自定义文章布局文件word.ejs，在其中添加如下代码:</p>
+<pre><code>&lt;div style=&quot;margin-top:10px;&quot;&gt;
+&lt;span class=&quot;post-time&quot;&gt;
+  &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+&lt;i class=&quot;fa fa-keyboard-o&quot;&gt;&lt;/i&gt;
+&lt;span class=&quot;post-meta-item-text&quot; style=&quot;font-size: 16px;color: grey&quot;&gt;  字数统计: &lt;/span&gt;
+&lt;!--这里样式可以自己定制--&gt;
+&lt;span class=&quot;post-count&quot; style=&quot;font-size: 16px;color: grey&quot;&gt;&lt;%= wordcount(post.content) %&gt;字&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class=&quot;post-time&quot;&gt;
+  &amp;nbsp; | &amp;nbsp;
+  &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+&lt;i class=&quot;fa fa-hourglass-half&quot;&gt;&lt;/i&gt;
+&lt;span class=&quot;post-meta-item-text&quot; style=&quot;font-size: 16px;color: grey&quot;&gt;  阅读时长: &lt;/span&gt;
+&lt;span class=&quot;post-count&quot; style=&quot;font-size: 16px;color: grey&quot;&gt;&lt;%= min2read(post.content) %&gt;分&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p>然后直接打开文章布局文件article.ejs，在其中添加代码如下所示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/4395bdff060130269.md.png" alt="图4"></p>
+<pre><code> &lt;header class=&quot;article-header&quot;&gt;
+&lt;%- partial(&#39;post/title&#39;, &#123;class_name: &#39;article-title&#39;&#125;) %&gt;
+&lt;% if (!post.noDate)&#123; %&gt;
+&lt;%- partial(&#39;post/date&#39;, &#123;class_name: &#39;archive-article-date&#39;, date_format: null&#125;) %&gt;
+         
+         &lt;!-- 开始添加字数统计--&gt;
+&lt;%- partial(&#39;post/word&#39;) %&gt;
+&lt;!-- 添加完成 --&gt;
+        
+         &lt;% &#125; %&gt;
+         
+        &lt;!-- 开始添加字数统计2--&gt;
+         
+        &lt;!-- 添加代码 --&gt;
+&lt;% if ( !index )&#123; %&gt;
+  &lt;span class=&quot;archive-article-date&quot;&gt;
+  阅读量 &lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;% &#125; %&gt;
+        
+  &lt;/header&gt;
+</code></pre>
+<p>至此，字数统计、阅读时长、阅读量就弄好了，赶紧部署到本地预览一下吧。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/536873e935fd74e01.md.png" alt="图5"></p>
+<h2 id="2-文章分类的实现"><a href="#2-文章分类的实现" class="headerlink" title="2.文章分类的实现"></a>2.文章分类的实现</h2><p>如果我们坚持写下去的话文章就会越来越多，希望对某一类文章进行分类，这时可以在菜单栏添加一个分类的选项，并对其进行布局，具体步骤如下：</p>
+<h3 id="1-打开主题配置文件，在menu栏下加上如下内容"><a href="#1-打开主题配置文件，在menu栏下加上如下内容" class="headerlink" title="(1)打开主题配置文件，在menu栏下加上如下内容"></a>(1)打开主题配置文件，在menu栏下加上如下内容</h3><pre><code>menu:
+  主页: /home
+  分类: /categories
+</code></pre>
+<h3 id="2-打开Git-Bash，输入以下代码创建categories配置文件"><a href="#2-打开Git-Bash，输入以下代码创建categories配置文件" class="headerlink" title="(2)打开Git Bash，输入以下代码创建categories配置文件"></a>(2)打开Git Bash，输入以下代码创建categories配置文件</h3><pre><code>hexo new page categories
+</code></pre>
+<h3 id="3-打开-source-categories-index-md文件，修改如下："><a href="#3-打开-source-categories-index-md文件，修改如下：" class="headerlink" title="(3)打开\source\categories\index.md文件，修改如下："></a>(3)打开\source\categories\index.md文件，修改如下：</h3><pre><code>---
+title: 分类
+date: 2021-01-7 18:18:25
+toc: false
+comments: false
+layout: categories
+---
+</code></pre>
+<h3 id="4-修改或覆盖-themes-yilia-layout-categories-ejs文件如下："><a href="#4-修改或覆盖-themes-yilia-layout-categories-ejs文件如下：" class="headerlink" title="(4)修改或覆盖\themes\yilia\layout\categories.ejs文件如下："></a>(4)修改或覆盖\themes\yilia\layout\categories.ejs文件如下：</h3><pre><code>&lt;article class=&quot;article article-type-post show&quot;&gt;
+  &lt;header class=&quot;article-header&quot; style=&quot;border-bottom: 1px solid #ccc&quot;&gt;
+  &lt;h1 class=&quot;article-title&quot; itemprop=&quot;name&quot;&gt;
+&lt;%= page.title %&gt;
+  &lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;% if (site.categories.length)&#123; %&gt;
+  &lt;div class=&quot;category-all-page&quot;&gt;
+&lt;h3&gt;说明：给文章简单地做一下分类&lt;/h3&gt;
+&lt;h3&gt;共计&amp;nbsp;&lt;%= site.categories.length %&gt;&amp;nbsp;个分类&lt;/h3&gt;
+&lt;%- list_categories(site.categories, &#123;
+  show_count: true,
+  class: &#39;category-list-item&#39;,
+  style: &#39;list&#39;,
+  depth:3,   
+  separator: &#39;&#39;
+&#125;) %&gt;
+  &lt;/div&gt;
+  &lt;% &#125; %&gt;
+&lt;/article&gt;
+</code></pre>
+<h3 id="5-添加如下代码到themes-yilia-source-main-0cf68a-css中："><a href="#5-添加如下代码到themes-yilia-source-main-0cf68a-css中：" class="headerlink" title="(5)添加如下代码到themes\yilia\source\main.0cf68a.css中："></a>(5)添加如下代码到themes\yilia\source\main.0cf68a.css中：</h3><p><img src="https://nas.minkeren.com:8001/images/2021/01/08/6fbf0f0fd1eb4e6a7.md.png" alt="图6"></p>
+<pre><code>category-all-page &#123;
+margin: 30px 40px 30px 40px;
+position: relative;
+min-height: 70vh;
+  &#125;
+  .category-all-page h2 &#123;
+margin: 20px 0;
+  &#125;
+  .category-all-page .category-all-title &#123;
+text-align: center;
+  &#125;
+  .category-all-page .category-all &#123;
+margin-top: 20px;
+  &#125;
+  .category-all-page .category-list &#123;
+margin: 0;
+padding: 0;
+list-style: none;
+  &#125;
+  .category-all-page .category-list-item-list-item &#123;
+margin: 10px 15px;
+  &#125;
+  .category-all-page .category-list-item-list-count &#123;
+color: $grey;
+  &#125;
+  .category-all-page .category-list-item-list-count:before &#123;
+display: inline;
+content: &quot; (&quot;;
+  &#125;
+  .category-all-page .category-list-item-list-count:after &#123;
+display: inline;
+content: &quot;) &quot;;
+  &#125;
+  .category-all-page .category-list-item &#123;
+margin: 10px 10px;
+  &#125;
+  .category-all-page .category-list-count &#123;
+color: $grey;
+  &#125;
+  .category-all-page .category-list-count:before &#123;
+display: inline;
+content: &quot; (&quot;;
+  &#125;
+  .category-all-page .category-list-count:after &#123;
+display: inline;
+content: &quot;) &quot;;
+  &#125;
+  .category-all-page .category-list-child &#123;
+padding-left: 10px;
+  &#125;
+</code></pre>
+<p>至此，文章分类添加完毕，当修改或者新写一篇文章的时候，可以在文章中添加一行代码即可。以如下示例，就是将这篇文章归类到了一个”个人博客”的分类中，可以在菜单栏点击分类查看。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/7b11219c188cf737f.md.png" alt="图7"></p>
+<pre><code>---
+title: 如何在Github上搭建个人博客--基础篇
+categories:
+- 个人博客
+---
+</code></pre>
+<p>效果展示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/8319f2918287fb675.md.png" alt="图8"></p>
+<h2 id="3-文章标签的实现"><a href="#3-文章标签的实现" class="headerlink" title="3.文章标签的实现"></a>3.文章标签的实现</h2><p>当你写文章时，可以根据文章的方向、题材、内容确定一个或者多个标签，当我们需要查看某一类标签的文章时，就可以通过标签迅速查看。文章标签的实现和分类的实现差不多，这里就不过多阐述。</p>
+<h3 id="1-打开主题配置文件，在menu栏下加上如下内容-1"><a href="#1-打开主题配置文件，在menu栏下加上如下内容-1" class="headerlink" title="(1)打开主题配置文件，在menu栏下加上如下内容"></a>(1)打开主题配置文件，在menu栏下加上如下内容</h3><pre><code>menu:
+  主页: /home
+  标签: /tags
+  分类: /categories
+</code></pre>
+<h3 id="2-打开Git-Bash，输入以下代码创建tags配置文件"><a href="#2-打开Git-Bash，输入以下代码创建tags配置文件" class="headerlink" title="(2)打开Git Bash，输入以下代码创建tags配置文件"></a>(2)打开Git Bash，输入以下代码创建tags配置文件</h3><pre><code>hexo new page tags
+</code></pre>
+<h3 id="3-打开-source-categories-index-md文件，修改如下：-1"><a href="#3-打开-source-categories-index-md文件，修改如下：-1" class="headerlink" title="(3)打开\source\categories\index.md文件，修改如下："></a>(3)打开\source\categories\index.md文件，修改如下：</h3><pre><code>---
+title: 标签
+date: 2021-01-06 11:55:27
+type: tags
+comments: false
+layout: tag
+---
+</code></pre>
+<h3 id="4-修改或覆盖-themes-yilia-layout-tag-ejs文件如下："><a href="#4-修改或覆盖-themes-yilia-layout-tag-ejs文件如下：" class="headerlink" title="(4)修改或覆盖\themes\yilia\layout\tag.ejs文件如下："></a>(4)修改或覆盖\themes\yilia\layout\tag.ejs文件如下：</h3><pre><code>&lt;article class=&quot;article article-type-post show&quot;&gt;
+  &lt;header class=&quot;article-header&quot; style=&quot;border-bottom: 1px solid #ccc&quot;&gt;
+  &lt;h1 class=&quot;article-title&quot; itemprop=&quot;name&quot;&gt;
+&lt;%= page.title %&gt;
+  &lt;/h1&gt;
+  &lt;/header&gt;
+  
+  &lt;h3&gt;共计&amp;nbsp;&lt;%= site.tags.length %&gt;&amp;nbsp;个标签&lt;/h3&gt;
+  &lt;div class=&quot;tag-cloud&quot;&gt;
+&lt;%- tagcloud(&#123;
+  min_font: 20, 
+  max_font: 35, 
+  amount: 999
+&#125;) %&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+<h3 id="5-添加如下代码到themes-yilia-source-main-0cf68a-css中：-1"><a href="#5-添加如下代码到themes-yilia-source-main-0cf68a-css中：-1" class="headerlink" title="(5)添加如下代码到themes\yilia\source\main.0cf68a.css中："></a>(5)添加如下代码到themes\yilia\source\main.0cf68a.css中：</h3><pre><code>.tag-cloud &#123;
+    text-align:center;
+    padding:20px
+&#125;
+.tag-cloud a &#123;
+    margin:0 20px;
+    word-break:keep-all;
+    position:relative
+&#125;
+.tag-cloud a:hover::before &#123;
+    width:100%;
+    left:0;
+    right:auto
+&#125;
+.tag-cloud a::before &#123;
+    content:&quot;&quot;;
+    position:absolute;
+    width:0;
+    right:0;
+    bottom:0;
+    height:2px;
+    background:#08c;
+    -webkit-transition:width .3s ease;
+    transition:width .3s ease
+&#125;
+</code></pre>
+<p>当新写或修改文章时，可以在文章前边添加标签如下所示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/9f250d0d2d0e4118b.md.png" alt="图9"></p>
+<p>效果展示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1090287be92cc793b9.md.png" alt="图10"></p>
+<p>至此，标签也添加完成了，最后就剩归档的添加了。</p>
+<h2 id="4-文章归档的实现"><a href="#4-文章归档的实现" class="headerlink" title="4.文章归档的实现"></a>4.文章归档的实现</h2><p>归档，其实就是把你写的所有文章按照日期进行排序，相比于之前两个，归档就比较简单了，只需要前三步就可以了。</p>
+<h3 id="1-打开主题配置文件，在menu栏下加上如下内容-2"><a href="#1-打开主题配置文件，在menu栏下加上如下内容-2" class="headerlink" title="(1)打开主题配置文件，在menu栏下加上如下内容"></a>(1)打开主题配置文件，在menu栏下加上如下内容</h3><pre><code>menu:
+  主页: /home
+  标签: /tags
+  分类: /categories
+  归档: /archives
+</code></pre>
+<h3 id="2-打开Git-Bash，输入以下代码创建-x2F-archives配置文件"><a href="#2-打开Git-Bash，输入以下代码创建-x2F-archives配置文件" class="headerlink" title="(2)打开Git Bash，输入以下代码创建&#x2F;archives配置文件"></a>(2)打开Git Bash，输入以下代码创建&#x2F;archives配置文件</h3><pre><code>hexo new page /archives
+</code></pre>
+<h3 id="3-打开-source-archives-index-md文件，修改如下："><a href="#3-打开-source-archives-index-md文件，修改如下：" class="headerlink" title="(3)打开\source\archives\index.md文件，修改如下："></a>(3)打开\source\archives\index.md文件，修改如下：</h3><pre><code>---
+title: 归档
+date: 2021-01-07 09:37:47
+toc: false
+comments: false
+layout: archive
+---
+</code></pre>
+<p>效果展示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1148f6813582d7c127.md.png" alt="图11"></p>
+<p>至此，菜单栏算是布置完成了。</p>
+<h2 id="5-文章、菜单栏插入图标"><a href="#5-文章、菜单栏插入图标" class="headerlink" title="5.文章、菜单栏插入图标"></a>5.文章、菜单栏插入图标</h2><p>菜单栏布置完成了，但笔者感觉仍然是光秃秃的，如果在主页前面有个<i class="fas fa-home"></i>这样的图标就好了。</p>
+<p>首先，需要下载图标库，这里选择的是<a href="http://www.fontawesome.com.cn/">fontawesome</a>图标库，这里为了以后方便，笔者在淘宝上花了20大洋购买了其的本地图标库，下载好后将除了svgs的其他文件夹解压到themes\yilia\source目录(由于svgs太多图标，因此这里我只选了一些博客需要用到的图标传过去)。</p>
+<p><a href="https://nas.minkeren.com:5001/sharing/o9Y7ftO3G">fontawesome私有云下载</a></p>
+<p>下载好后有两个压缩包，fa…压缩包里面主要放的本地图标文件，图标代码PDF主要是方便查找检索图标。</p>
+<p>接着需要在themes\yilia\layout_partial\head.js文件中添加以下带来来导入fontawesome的图标配置。</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/font-awesome.css&quot;&gt;
+</code></pre>
+<p>在一般文章中插入图标只需要输入以下代码即可:</p>
+<pre><code>&lt;i class=&quot;fas fa-图标名&quot;&gt;
+</code></pre>
+<p>而在菜单栏添加图标还需要修改D:\Blog\themes\yilia\layout_partial\left-col.ejs文件，代码所示如下：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/122b8d6976b2c839e5.md.png" alt="图12"></p>
+<pre><code>&lt;nav class=&quot;header-menu&quot;&gt;
+        &lt;ul&gt;
+            &lt;% for (var i in theme.menu)&#123; %&gt;
+                &lt;%if (i === &quot;主页&quot; )&#123;%>
+    					<li><a href="<%- url_for(theme.menu[i]) %>"><i class="fas fa-home"></i><%= i %></a></li>
+    				<%&#125;else if (i === &quot;标签&quot; )&#123;%>
+    					<li><a href="<%- url_for(theme.menu[i]) %>"><i class="fas fa-tags"></i><%= i %></a></li>
+    				<%&#125;else if (i === &quot;分类&quot; )&#123;%>
+    					<li><a href="<%- url_for(theme.menu[i]) %>"><i class="fas fa-sort"></i><%= i %></a></li>
+    				<%&#125;else if (i === &quot;归档&quot; )&#123;%>
+    					<li><a href="<%- url_for(theme.menu[i]) %>"><i class="fas fa-archive"></i><%= i %></a></li>
+    				<%&#125;else&#123;%>
+    				<% continue %>
+    				<%&#125;%&gt;
+            &lt;%&#125;%&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+</code></pre>
+<p>如此，即可将图标添加到菜单栏前面了。</p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><p>1.为什么gihub的网站图标能显示，但gitee网站图标显示不出来？</p>
+<hr>
+]]></content>
+      <categories>
+        <category>个人博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>github</tag>
+        <tag>yilia主题</tag>
+        <tag>fontawesome图库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Github上搭建个人博客--基础篇</title>
+    <url>/2021/01/06/2021-1-6%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="利用Hexo框架在Github-x2F-Gitee上搭建自己的博客"><a href="#利用Hexo框架在Github-x2F-Gitee上搭建自己的博客" class="headerlink" title="利用Hexo框架在Github&#x2F;Gitee上搭建自己的博客"></a>利用Hexo框架在Github&#x2F;Gitee上搭建自己的博客</h3><span id="more"></span>
+
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：<br>1.增加了gitee的部署方法；<br>2.增加了图片说明。</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><p><a href="/2021/01/07/2021-1-7%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E4%B8%BB%E9%A2%98%E7%AF%87/">如何在Github上搭建个人博客–主题篇</a></p>
+<hr>
+<h1 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><h2 id="1-注册一个Github-x2F-Gitee账号"><a href="#1-注册一个Github-x2F-Gitee账号" class="headerlink" title="1.注册一个Github&#x2F;Gitee账号"></a>1.注册一个Github&#x2F;Gitee账号</h2><p><a href="https://github.com/">Github官网</a></p>
+<p><a href="https://gitee.com/">Gitee官网</a></p>
+<p>Github是国外的开源仓库，支持Web Page服务，可以为用户代理网站；Gitee是国内的开原仓库，也包含Gitee Page服务。两者没有很大的区别，但对于国内用户来说，Gitee的上传下载速度更快些。</p>
+<h2 id="2-创建一个测试仓库"><a href="#2-创建一个测试仓库" class="headerlink" title="2.创建一个测试仓库"></a>2.创建一个测试仓库</h2><p>创建测试仓库的目的是为了测试本地Git与远程仓库的ssh数据传输，因此只需要在其中一个仓库创建即可，这里笔者是在Github上创建的仓库。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1.md.png" alt="图 1"></p>
+<p>在主页里面点击Repositories，然后点击New创建测试仓库。</p>
+<p>在Repository name里面填text,点击Create创建一个测试仓库。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/2.md.png" alt="图2"></p>
+<h2 id="3-创建master分支"><a href="#3-创建master分支" class="headerlink" title="3.创建master分支"></a>3.创建master分支</h2><p>如果你用的github，你还需要自己创建一个master分支，gitee会自动创建master分支。进入你创建的仓库中，点击main进去创建一个名为master的分支。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/3.md.png" alt="图3"></p>
+<h2 id="4-安装Git"><a href="#4-安装Git" class="headerlink" title="4.安装Git"></a>4.安装Git</h2><p><a href="https://git-scm.com/download">Git官网下载最新版</a>（下载太慢）</p>
+<p><a href="https://mirrors.edge.kernel.org/pub/software/scm/git/">Git各版本下载</a>（下载太慢）</p>
+<p><a href="https://nas.minkeren.com:888/sharing/ouobRyOW1">Git2.25.0 私有云下载</a>（笔者搭建的私有云，密码kr666，下载速度还阔以）</p>
+<p>这里笔者下载的是2.25.0版本，下载好后直接按照默认的安装步骤一直next，然后安装完成。安装完成后你的右键菜单应该会多出Git GUI Here和Git Bash Here，如果没有问题也不大。<br>验证能否使用：<br>右键点击Git Bash Here，然后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git:</span><br></pre></td></tr></table></figure>
+<p>如果没报错就说明成功。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/4.png" alt="图4"></p>
+<h2 id="5-设置ssh公钥传输方式（免密登录）"><a href="#5-设置ssh公钥传输方式（免密登录）" class="headerlink" title="5.设置ssh公钥传输方式（免密登录）"></a>5.设置ssh公钥传输方式（免密登录）</h2><p>要使得Git本地仓库和Github远程仓库绑定，需要用shh传输数据，而为了避免ssh每次传输都要输入密码，这里就使用公钥登录的方式。</p>
+<p>首先，在桌面右键运行Git Bash；然后输入代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>生成RSA密钥，然后敲四次回车，如果询问(y&#x2F;n)?，就输入y再敲回车。之后电脑上就会生成秘钥id_rsa和公钥id_rsa.pub，默认生成目录为C:\Users\用户名.ssh（生成目录主要看运行之后的提示，我的生成目录就是C:\Users\KeR\AppData\Roaming\SPB_Data.ssh）。</p>
+<p>接下来，我们需要将id_rsa.pub文件的内容复制到远程仓库中（这里以Github为例，Gitee同理）。首先打开自己的Github主页，点击右上角用户头像，进入Settings中，</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/5.md.png" alt="图5"></p>
+<p>接着在左边选项卡里面选择SSH and GPG keys选项，点击右边New SSH key添加公钥，</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/6.md.png" alt="图6"></p>
+<p>这里面tiele随便写，主要是把id_rsa.pub文件内容复制到Key里面，最后点击Add SSH即可。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/7.md.png" alt="图7"></p>
+<p>然后，验证是否成功。通过在Git Bash中输入</p>
+<pre><code>ssh -T git@github.com
+ssh -T git@gitee.com
+</code></pre>
+<p>验证，一般第一次输入会问(yes&#x2F;no&#x2F;)？只需要输入yes回车就行，出现下图所示结果说明公钥添加成功了。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/8.md.png" alt="图8"></p>
+<h2 id="6-利用ssh使得Git与远程仓库绑定（以github为例）"><a href="#6-利用ssh使得Git与远程仓库绑定（以github为例）" class="headerlink" title="6.利用ssh使得Git与远程仓库绑定（以github为例）"></a>6.利用ssh使得Git与远程仓库绑定（以github为例）</h2><p>首先，在自己的github上新建一个名为text的仓库，进入仓库点击Code，复制其中的https地址。（例如我的是<a href="https://github.com/DreamStalk-ai/text.git%EF%BC%89">https://github.com/DreamStalk-ai/text.git）</a></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/9.md.png" alt="图9"></p>
+<p>然后创建D:\git codelife文件夹，并在其中右键运行Git Bash，执行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/DreamStalk-ai/text.git</span><br></pre></td></tr></table></figure>
+<p>这里的地址为刚才复制的地址，执行后将远程仓库clone到了本地，可以在本地文件夹中找到.git的隐藏文件夹和README.md文件。</p>
+<p>然后，再测试本地仓库到远程仓库的传输。先在本地创建一个text.txt的测试文件，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>查看仓库状态，然后我们输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add text.txt</span><br></pre></td></tr></table></figure>
+<p>将文件text.txt添加到临时缓冲区，再用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;随便写&quot;</span><br></pre></td></tr></table></figure>
+<p>将其提交到远程仓库。如果是第一次提交，需要添加两行代码</p>
+<pre>
+git config --global user.name"xxx"
+git config --global user.email"xxx@xxx.com"
+</pre>
+<p>分别添加你的用户名和邮箱，完成后输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<p>查看仓库提交日志，再输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>查看仓库状态。</p>
+<p>现在就可以输入<br> <code>git push origin master</code> 或者 <code>git push origin</code><br>将本地仓库提交到远程仓库了，第一次上传需要输入仓库密码，验证成功后，进入Github中的text仓库，就可以看到text.txt文件了。</p>
+<h2 id="7-安装node-js"><a href="#7-安装node-js" class="headerlink" title="7.安装node.js"></a>7.安装node.js</h2><p><a href="https://nodejs.org/en/">node.js官网</a></p>
+<p>直接点击下载最新版，安装过程也是默认next就行，这里的安装路径笔者选择的是D盘，D:\nodejs。安装完成后打开cmd输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>命令检查版本。</p>
+<p>设置npm的模块安装路径和环境变量。首先，在nodejs里面新建两个空文件夹node_cache、node_global，然后打开Git Bash，在里面输入如下两个命令：</p>
+<pre>
+npm config set prefix "D:\nodejs\node_global"
+npm config set prefix "D:\nodejs\node_global"
+</pre>
+
+<p>然后，打开此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量，在系统变量中添加环境变量”NODE_PATH”,值为”D:\nodejs\node_global\node_modules”，然后在用户变量里的Path中，将相应的npm路径改为”D:\nodejs\node_global”。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/10.md.png" alt="图10"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/11.md.png" alt="图11"></p>
+<p>最后，在cmd命令下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install webpack -g</span><br></pre></td></tr></table></figure>
+<p>来安装webpack模块至\nodejs\node_modules文件夹中。</p>
+<h1 id="二、博客搭建"><a href="#二、博客搭建" class="headerlink" title="二、博客搭建"></a>二、博客搭建</h1><h2 id="1-为你的个人博客创建一个远程仓库"><a href="#1-为你的个人博客创建一个远程仓库" class="headerlink" title="1.为你的个人博客创建一个远程仓库"></a>1.为你的个人博客创建一个远程仓库</h2><h3 id="1-Github远程仓库"><a href="#1-Github远程仓库" class="headerlink" title="(1)Github远程仓库"></a>(1)Github远程仓库</h3><p>仓库的Repository name里面填你的用户名.github.io点击Create创建一个仓库。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/12.md.png" alt="图12"></p>
+<h3 id="2-Gitee远程仓库"><a href="#2-Gitee远程仓库" class="headerlink" title="(2)Gitee远程仓库"></a>(2)Gitee远程仓库</h3><p>在右上键点创建仓库</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/13.md.png" alt="图13"></p>
+<p>在里面填你的个人空间地址，其他的不管，点击Create创建一个仓库。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/14.md.png" alt="图14"></p>
+<p>获取个人空间地址的方法：</p>
+<p>右上角点击设置</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/18.md.png" alt="图15"></p>
+<p>在个人资料-&gt;个人空间地址可以查看，方框里面的就是个人空间地址。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/16.md.png" alt="图16"></p>
+<h2 id="2-设置master分支-仅Github"><a href="#2-设置master分支-仅Github" class="headerlink" title="2.设置master分支(仅Github)"></a>2.设置master分支(仅Github)</h2><p>进入你创建的仓库中，点击main进去创建一个名为master的分支，然后在菜单栏选择Setting，在GitHub Pages-&gt;Source里面选择创建好的分支master，点击Save保存。之后就暂时不同Github了。</p>
+<h2 id="3-创建本地仓库并安装Hexo"><a href="#3-创建本地仓库并安装Hexo" class="headerlink" title="3.创建本地仓库并安装Hexo"></a>3.创建本地仓库并安装Hexo</h2><p>Hexo是一种个人博客的搭框架的软件，方便我们假设个人博客。首先，在本地新建一个文件夹，用来存放博客信息。然后在文件夹里面鼠标右键打开Git Bash，输入npm命令安装Hexo:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>命令初始化博客,然后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>静态部署,最后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>查看。</p>
+<p>此时在浏览器输入<a href="http://localhost:4000就可以打开新部署的网页了，如果看完了可以在git">http://localhost:4000就可以打开新部署的网页了，如果看完了可以在git</a> bash界面按ctrl + c 停止运行。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/17.md.png" alt="图17"></p>
+<h2 id="4-将Hexo部署到Github"><a href="#4-将Hexo部署到Github" class="headerlink" title="4.将Hexo部署到Github"></a>4.将Hexo部署到Github</h2><p>首先打开我们的博客文件夹根目录，用笔记本打开配置文件_config.yml，在最底部添加</p>
+<pre>
+deploy:
+  type: git
+  repository: git@github.com:DreamStalk-ai/DreamStalk-ai.github.io.git
+  branch: master
+ </pre>
+
+<p>注意，这里的repository是仓库中code里面的ssh地址，不是https地址。</p>
+<p>如果是Gitee，这里的repository就要改为<a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#101;&#x65;&#x2e;&#99;&#111;&#109;">&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#101;&#x65;&#x2e;&#99;&#111;&#109;</a>:minkeren&#x2F;minkeren.git。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/18.md.png" alt="图18"></p>
+<p>然后回到根目录中，打开Git Bash，安装Git部署插件，输入命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>,运行完后输入以下三条命令：</p>
+<pre>
+hexo clean        #清除缓存文件
+hexo g            #生成网站静态文件到public文件夹
+hexo d            #生成网站静态文件并部署到制定Github仓库
+ </pre>
+<p>完成后，打开浏览器，输入https:&#x2F;&#x2F;你的用户名.github.io就可以打开你的网页了。</p>
+<p>如果是Gitee，还需要在仓库进行的服务-&gt;Gitee Page里面进行刷新，才能看得到。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/19.md.png" alt="图19"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/20.md.png" alt="图20"></p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><ol>
+<li></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>个人博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>github</tag>
+        <tag>gitee</tag>
+        <tag>git</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Github上搭建个人博客--域名篇</title>
+    <url>/2021/01/08/2021-1-8%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E5%9F%9F%E5%90%8D%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="给自己的Github博客加上自己喜欢的域名"><a href="#给自己的Github博客加上自己喜欢的域名" class="headerlink" title="给自己的Github博客加上自己喜欢的域名"></a>给自己的Github博客加上自己喜欢的域名</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><p><a href="/2021/01/06/2021-1-6%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E5%9F%BA%E7%A1%80%E7%AF%87/">如何在Github上搭建个人博客–基础篇</a></p>
+<p><a href="/2021/01/07/2021-1-7%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E4%B8%BB%E9%A2%98%E7%AF%87/">如何在Github上搭建个人博客–主题篇</a></p>
+<hr>
+<p>注意：Github的地址域名是可以直接绑定的，Gitee还需要备案，特别麻烦，这里就不做详细阐述了。</p>
+<h1 id="一、购买域名"><a href="#一、购买域名" class="headerlink" title="一、购买域名"></a>一、购买域名</h1><p><a href="https://wanwang.aliyun.com/">万网地址</a></p>
+<p>直接用自己的支付宝扫码就可以登录了。</p>
+<p>然后在搜索框内搜索自己的域名看有没有被注册，后缀名可以自己选择，不同后缀名解析速度不一样，价格也不一样。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/164fd70ed5a14f55e.md.png" alt="图1"></p>
+<p>然后点加入清单，再点旁边的理解结算付款即可。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/26184ee502fbfce7d.md.png" alt="图2"></p>
+<h1 id="二、为域名申请ssh证书"><a href="#二、为域名申请ssh证书" class="headerlink" title="二、为域名申请ssh证书"></a>二、为域名申请ssh证书</h1><p>域名购买好后进入阿里云的<a href="https://dc.console.aliyun.com/next/#/domain/list/all-domain">域名控制台</a>，在自己的域名后面点击管理</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/32b98f8756c3fccd9.md.png" alt="图3"></p>
+<p>进入后点下面的开启ssh证书</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/49a6154cd00899883.md.png" alt="图4"></p>
+<p>勾选授权后点击申请进入</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/5b74c67f21ec05f2f.md.png" alt="图5"></p>
+<p>点进证书资源包</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/6dd0ed21adfef56ed.md.png" alt="图6"></p>
+<p>选择免费证书扩容包，点击立即购买</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/7ffacf370fe9724c7.md.png" alt="图7"></p>
+<p>进入<br><a href="https://yundunnext.console.aliyun.com/?spm=5176.15089375.J_5834642020.4.30f51232FCV8G7&p=casnext#/overview/cn-hangzhou">ssh证书控制台</a>，点击证书申请</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/884feb3c08689e33c.md.png" alt="图8"></p>
+<p>点进去证书申请，按提示填写内容，最后提示申请成功，接下来要做的就是等那边核验结束了。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/9d0a23631430cae74.md.png" alt="图9"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/10e15eeab6bce18d58.md.png" alt="图10"></p>
+<h1 id="三、为域名添加记录"><a href="#三、为域名添加记录" class="headerlink" title="三、为域名添加记录"></a>三、为域名添加记录</h1><p>首先，ping你的博客的网址获取博客的ip地址，</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/11e33906d9ff229e9b.md.png" alt="图11"></p>
+<p>然后，进入阿里云的<a href="https://dc.console.aliyun.com/next/#/domain/list/all-domain">域名控制台</a>，点击解析，加入两天记录如下。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/122f2bed24ccdbf33c.md.png" alt="图12"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/136c8a8de438ebef35.md.png" alt="图13"></p>
+<p>最后，打开你的博客的根目录下的source文件，添加一个CNAME文件，添加如下内容。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1446e2e0d2421787ff.md.png" alt="图14"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/155bfed6fd3979a450.png" alt="图15"></p>
+<p>最后，重新部署一下两个远程仓库，结束后在网页上输入你的域名即可浏览博客。</p>
+<p>16</p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><ol>
+<li></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>个人博客</category>
+      </categories>
+      <tags>
+        <tag>阿里云</tag>
+        <tag>域名申请</tag>
+        <tag>ssh证书</tag>
+        <tag>DNS域名解析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>黑群晖NAS之图库篇</title>
+    <url>/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E5%9B%BE%E5%BA%93%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="在黑群晖nas主机上搭建自己的一个图床，用于存放博客的贴图"><a href="#在黑群晖nas主机上搭建自己的一个图床，用于存放博客的贴图" class="headerlink" title="在黑群晖nas主机上搭建自己的一个图床，用于存放博客的贴图"></a>在黑群晖nas主机上搭建自己的一个图床，用于存放博客的贴图</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><hr>
+<h2 id="前置套件"><a href="#前置套件" class="headerlink" title="前置套件"></a>前置套件</h2><h3 id="·-Web-Station"><a href="#·-Web-Station" class="headerlink" title="· Web Station"></a>· Web Station</h3><h3 id="·-PHP-7-0"><a href="#·-PHP-7-0" class="headerlink" title="· PHP 7.0"></a>· PHP 7.0</h3><h3 id="·-Apache-Http-Server-2-2"><a href="#·-Apache-Http-Server-2-2" class="headerlink" title="· Apache Http Server 2.2"></a>· Apache Http Server 2.2</h3><h3 id="·-Maria-5"><a href="#·-Maria-5" class="headerlink" title="· Maria 5"></a>· Maria 5</h3><h3 id="·-phpMyAdmin"><a href="#·-phpMyAdmin" class="headerlink" title="· phpMyAdmin"></a>· phpMyAdmin</h3><hr>
+<h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-下载Chevereto"><a href="#1-下载Chevereto" class="headerlink" title="1.下载Chevereto"></a>1.下载Chevereto</h2><p><a href="https://github.com/Chevereto/Chevereto-Free">Github源码下载</a></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/177d6496d7ae288e6.md.png" alt="图1"></p>
+<p><a href="https://nas.minkeren.com:5001/sharing/deuW7vN6h">私有云下载</a></p>
+<p>下载完后将压缩包上传到web目录，解压并且重命名，</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/233f0278274a4517b.md.png" alt="图2"></p>
+<p>然后右键重命名后的文件夹-&gt;权限，将所有权限设置为读&#x2F;写。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/326bd3aaf3887b0f7.md.png" alt="图3"></p>
+<h2 id="2-添加虚拟主机"><a href="#2-添加虚拟主机" class="headerlink" title="2.添加虚拟主机"></a>2.添加虚拟主机</h2><p>打开Web Station添加虚拟主机，如果是第一次使用，要下载后台端套件，如图所示，</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/4e2bbe4b33336e7de.md.png" alt="图4"></p>
+<p>下载完套件后点PHP设置，双击下好的套件，然后找到拓展名，这里全部勾选。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/50b9c88e56a7dad7d.md.png" alt="图5"></p>
+<p>最后点击虚拟主机-&gt;新增，按照下图提示配置虚拟机，然后点击确定，装好虚拟机，同时我们也要在路由器配置一个8001-8001的端口映射。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/6210edda9a35275d6.md.png" alt="图6"></p>
+<h2 id="3-新建数据库"><a href="#3-新建数据库" class="headerlink" title="3.新建数据库"></a>3.新建数据库</h2><p>登录phpMyAdmin新建数据库，在数据库里面创一个cheverebo的表</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/74b54876a45f95788.md.png" alt="图7"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/8ce64a68c580ab763.md.png" alt="图8"></p>
+<p>通过设置的IP或域名打开Chevereto安装程序，并填写数据库信息</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/9b4435711cb5642b0.md.png" alt="图9"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/10a69ef019b2ac5dfd.md.png" alt="图10"></p>
+<p>安装完成进入控制台设置中文</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1180ac6a6ce54918cf.md.png" alt="图11"></p>
+<p>安装完成后进入查看效果</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1288900d2402f215e2.md.png" alt="图12"></p>
+<h1 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h1><h2 id="1-新建相册"><a href="#1-新建相册" class="headerlink" title="1.新建相册"></a>1.新建相册</h2><p>点击头像，在出现的菜单中点相册</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/134ce5a4d16e4244b6.md.png" alt="图13"></p>
+<p>然后点新建相册，设置好相册名字后就进入相册了，然后点击右上角上传相册，然后只需要拖动文件进去，最后点上传可以将本地图片传入进去了。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1483541165aa47903f.md.png" alt="图14"></p>
+<h2 id="2-图片外链"><a href="#2-图片外链" class="headerlink" title="2.图片外链"></a>2.图片外链</h2><p>首先点击需要外链的图片，鼠标向下滑动，找到嵌入代码，下面就有图片的很多链接了一般我们博客文章上用的都是URL链接。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1591c808e8786f8ea0.md.png" alt="图15"></p>
+<h2 id="3-展示效果"><a href="#3-展示效果" class="headerlink" title="3.展示效果"></a>3.展示效果</h2><p>文章中添加url链接</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/166b765e29caa7afcb.md.png" alt="图16"></p>
+<p>博客上显示</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1785f329890e5d1dd0.md.png" alt="图17"></p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><hr>
+]]></content>
+      <categories>
+        <category>家庭主机</category>
+      </categories>
+      <tags>
+        <tag>蜗牛星际J1900</tag>
+        <tag>黑群晖NAS</tag>
+        <tag>Chevereto图床</tag>
+        <tag>MarkdownPad2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>黑群晖NAS之私有云篇</title>
+    <url>/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。"><a href="#在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。" class="headerlink" title="在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。"></a>在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><hr>
+<h2 id="前置套件"><a href="#前置套件" class="headerlink" title="前置套件"></a>前置套件</h2><h3 id="·-Synology-Drive"><a href="#·-Synology-Drive" class="headerlink" title="· Synology Drive"></a>· Synology Drive</h3><h3 id="·-Synology-Drive-管理控制台"><a href="#·-Synology-Drive-管理控制台" class="headerlink" title="· Synology Drive 管理控制台"></a>· Synology Drive 管理控制台</h3><h3 id="·-Synology-Drive-ShareSync"><a href="#·-Synology-Drive-ShareSync" class="headerlink" title="· Synology Drive ShareSync"></a>· Synology Drive ShareSync</h3><h3 id="·-CloudSync"><a href="#·-CloudSync" class="headerlink" title="· CloudSync"></a>· CloudSync</h3><hr>
+<h1 id="一、云存储与分享"><a href="#一、云存储与分享" class="headerlink" title="一、云存储与分享"></a>一、云存储与分享</h1><h2 id="1-win和nas的文件夹共享"><a href="#1-win和nas的文件夹共享" class="headerlink" title="1.win和nas的文件夹共享"></a>1.win和nas的文件夹共享</h2><p>进入<a href="https://www.synology.cn/zh-cn/support/download/DS918+#androids">群晖软件下载中心</a>，选择自己群晖NAS的型号，笔者的是DS918+系统，然后点击桌面实时应用，下载<a href="https://cndl.synology.cn/download/Utility/Assistant/6.2-24922/Windows/synology-assistant-6.2-24922.exe?model=DS918+&bays=4&dsm_version=6.2.3&build_number=25426">Synology Assistant</a>,选择window下载。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1d531fecc33b1f683.md.png" alt="图1"></p>
+<p>下载完后输入你的群晖的nas地址，账号和密码即可连接</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/434b193d61108ac93.md.png" alt="图2"></p>
+<p>连接之后如图所示</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/344a98a77e2dba162.md.png" alt="图3"></p>
+<p>接着你的C:\Users\用户名下面的就会多出一个SynologyDrive的文件夹，我们将电脑上的文件放到这个文件夹就会自动同步到nas主机上的home\Drive文件夹中。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/434b193d61108ac93.md.png" alt="图4"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/58a375d30b3be8483.md.png" alt="图5"></p>
+<h2 id="2-Andriod和nas的文件夹共享"><a href="#2-Andriod和nas的文件夹共享" class="headerlink" title="2.Andriod和nas的文件夹共享"></a>2.Andriod和nas的文件夹共享</h2><p>进入<a href="https://www.synology.cn/zh-cn/support/download/DS918+#androids">群晖软件下载中心</a>，选择自己群晖NAS的型号，笔者的是DS918+系统，然后点击Andriod 应用程序，下载<a href="https://cndl.synology.cn/download/Mobile/Android-Drive/2.3.0-361/Android-SynologyDrive.2.3.0-361.apk">Synology Drive</a>。</p>
+<p>下载完后输入你的群晖的nas地址，账号和密码即可连接</p>
+<p>连接之后如图所示</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/6.th.jpg" alt="图6"></p>
+<p>点击右下角即可添加文件，添加上去后文件同样也是自动同步到nas和win上面的。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/7.md.jpg" alt="图7"></p>
+<h2 id="3-nas的外链共享"><a href="#3-nas的外链共享" class="headerlink" title="3.nas的外链共享"></a>3.nas的外链共享</h2><h3 id="（1）在win上，可以直接在File-Station里面右键文件或者文件夹，点击共享"><a href="#（1）在win上，可以直接在File-Station里面右键文件或者文件夹，点击共享" class="headerlink" title="（1）在win上，可以直接在File Station里面右键文件或者文件夹，点击共享"></a>（1）在win上，可以直接在File Station里面右键文件或者文件夹，点击共享</h3><p><img src="https://nas.minkeren.com:8001/images/2021/01/08/8892d9d72206001d6.md.png" alt="图8"></p>
+<p>在共享里面你可以设置共享文件的密码、有效期和访问次数等等。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/9ab170afbb8f2b0fe.md.png" alt="图9"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/10b4b06fc512d9378a.md.png" alt="图10"></p>
+<p>###（2）在Andriod上，也可以通过点击文件右边三个点进行共享</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/11.md.jpg" alt="图11"></p>
+<p>不过，Andriod上只能访问Drive共享的文件夹，共享文件夹可以在Synology Drive 管理控制台的团队文件夹里面进行设置。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1218e1a1d35d6c66b9.md.png" alt="图12"></p>
+<h1 id="二、百度云备份"><a href="#二、百度云备份" class="headerlink" title="二、百度云备份"></a>二、百度云备份</h1><p>首先，打开Cloud Sync套件，添加云供应商，这里选择的是百度云。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/139f0ceb49a94a6c64.md.png" alt="图13"></p>
+<p>然后任务列表-&gt;新增，上面是NAS里面的文件夹，下面是百度云的文件夹，<br>尽量别选根目录，新建一个文件夹。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/14a7a4636ee444ac8a.md.png" alt="图14"></p>
+<p>然后在计划里面可以设置备份启动的时间，不然它一直在备份。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1561f8e26792360489.md.png" alt="图15"></p>
+<p>设置完成后在计划时间内它就会自动启动备份。</p>
+<p>效果展示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/16707c079eaab48669.md.png" alt="图16"></p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><hr>
+]]></content>
+      <categories>
+        <category>家庭主机</category>
+      </categories>
+      <tags>
+        <tag>蜗牛星际J1900</tag>
+        <tag>黑群晖NAS</tag>
+        <tag>Synology Drive</tag>
+        <tag>百度云</tag>
+      </tags>
+  </entry>
+</search>

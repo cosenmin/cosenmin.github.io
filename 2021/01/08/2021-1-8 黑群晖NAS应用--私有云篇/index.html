@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>黑群晖NAS之私有云篇 | Cosen'blog</title><meta name="keywords" content="蜗牛星际J1900,黑群晖NAS,Synology Drive,百度云"><meta name="author" content="cosenmin"><meta name="copyright" content="cosenmin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑群晖NAS之私有云篇">
+<meta property="og:url" content="http://example.com/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/index.html">
+<meta property="og:site_name" content="Cosen&#39;blog">
+<meta property="og:description" content="简介在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cosenmin.gitee.io/cdn/blog/bg/default_cover1.bmp">
+<meta property="article:published_time" content="2021-01-08T10:18:27.000Z">
+<meta property="article:modified_time" content="2021-01-14T13:13:16.914Z">
+<meta property="article:author" content="cosenmin">
+<meta property="article:tag" content="蜗牛星际J1900">
+<meta property="article:tag" content="黑群晖NAS">
+<meta property="article:tag" content="Synology Drive">
+<meta property="article:tag" content="百度云">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cosenmin.gitee.io/cdn/blog/bg/default_cover1.bmp"><link rel="shortcut icon" href="https://cosenmin.gitee.io/cdn/blog/fav/16678(%E5%B7%B2%E5%8E%BB%E5%BA%95)1.png"><link rel="canonical" href="http://example.com/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/./css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '黑群晖NAS之私有云篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-14 21:13:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cosenmin.gitee.io/cdn/blog/avatar/shidiqi.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-house-return"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-tree"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/library/"><i class="fa-fw fas fa-books"></i><span> 图书馆</span></a></li><li><a class="site-page child" href="/notes/"><i class="fa-fw fas fa-book-spells"></i><span> 读书笔记</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cosenmin.gitee.io/cdn/blog/bg/default_cover1.bmp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cosen'blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-house-return"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-tree"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/library/"><i class="fa-fw fas fa-books"></i><span> 图书馆</span></a></li><li><a class="site-page child" href="/notes/"><i class="fa-fw fas fa-book-spells"></i><span> 读书笔记</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">黑群晖NAS之私有云篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-08T10:18:27.000Z" title="发表于 2021-01-08 18:18:27">2021-01-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-14T13:13:16.914Z" title="更新于 2021-01-14 21:13:16">2021-01-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%B6%E5%BA%AD%E4%B8%BB%E6%9C%BA/">家庭主机</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">577</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="黑群晖NAS之私有云篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。"><a href="#在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。" class="headerlink" title="在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。"></a>在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。</h3><span id="more"></span>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>更新日期：<br>2021-1-8</p>
+<p>更新内容：</p>
+<hr>
+<hr>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><hr>
+<h2 id="前置套件"><a href="#前置套件" class="headerlink" title="前置套件"></a>前置套件</h2><h3 id="·-Synology-Drive"><a href="#·-Synology-Drive" class="headerlink" title="· Synology Drive"></a>· Synology Drive</h3><h3 id="·-Synology-Drive-管理控制台"><a href="#·-Synology-Drive-管理控制台" class="headerlink" title="· Synology Drive 管理控制台"></a>· Synology Drive 管理控制台</h3><h3 id="·-Synology-Drive-ShareSync"><a href="#·-Synology-Drive-ShareSync" class="headerlink" title="· Synology Drive ShareSync"></a>· Synology Drive ShareSync</h3><h3 id="·-CloudSync"><a href="#·-CloudSync" class="headerlink" title="· CloudSync"></a>· CloudSync</h3><hr>
+<h1 id="一、云存储与分享"><a href="#一、云存储与分享" class="headerlink" title="一、云存储与分享"></a>一、云存储与分享</h1><h2 id="1-win和nas的文件夹共享"><a href="#1-win和nas的文件夹共享" class="headerlink" title="1.win和nas的文件夹共享"></a>1.win和nas的文件夹共享</h2><p>进入<a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/support/download/DS918+#androids">群晖软件下载中心</a>，选择自己群晖NAS的型号，笔者的是DS918+系统，然后点击桌面实时应用，下载<a target="_blank" rel="noopener" href="https://cndl.synology.cn/download/Utility/Assistant/6.2-24922/Windows/synology-assistant-6.2-24922.exe?model=DS918+&bays=4&dsm_version=6.2.3&build_number=25426">Synology Assistant</a>,选择window下载。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1d531fecc33b1f683.md.png" alt="图1"></p>
+<p>下载完后输入你的群晖的nas地址，账号和密码即可连接</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/434b193d61108ac93.md.png" alt="图2"></p>
+<p>连接之后如图所示</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/344a98a77e2dba162.md.png" alt="图3"></p>
+<p>接着你的C:\Users\用户名下面的就会多出一个SynologyDrive的文件夹，我们将电脑上的文件放到这个文件夹就会自动同步到nas主机上的home\Drive文件夹中。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/434b193d61108ac93.md.png" alt="图4"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/58a375d30b3be8483.md.png" alt="图5"></p>
+<h2 id="2-Andriod和nas的文件夹共享"><a href="#2-Andriod和nas的文件夹共享" class="headerlink" title="2.Andriod和nas的文件夹共享"></a>2.Andriod和nas的文件夹共享</h2><p>进入<a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/support/download/DS918+#androids">群晖软件下载中心</a>，选择自己群晖NAS的型号，笔者的是DS918+系统，然后点击Andriod 应用程序，下载<a target="_blank" rel="noopener" href="https://cndl.synology.cn/download/Mobile/Android-Drive/2.3.0-361/Android-SynologyDrive.2.3.0-361.apk">Synology Drive</a>。</p>
+<p>下载完后输入你的群晖的nas地址，账号和密码即可连接</p>
+<p>连接之后如图所示</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/6.th.jpg" alt="图6"></p>
+<p>点击右下角即可添加文件，添加上去后文件同样也是自动同步到nas和win上面的。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/7.md.jpg" alt="图7"></p>
+<h2 id="3-nas的外链共享"><a href="#3-nas的外链共享" class="headerlink" title="3.nas的外链共享"></a>3.nas的外链共享</h2><h3 id="（1）在win上，可以直接在File-Station里面右键文件或者文件夹，点击共享"><a href="#（1）在win上，可以直接在File-Station里面右键文件或者文件夹，点击共享" class="headerlink" title="（1）在win上，可以直接在File Station里面右键文件或者文件夹，点击共享"></a>（1）在win上，可以直接在File Station里面右键文件或者文件夹，点击共享</h3><p><img src="https://nas.minkeren.com:8001/images/2021/01/08/8892d9d72206001d6.md.png" alt="图8"></p>
+<p>在共享里面你可以设置共享文件的密码、有效期和访问次数等等。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/9ab170afbb8f2b0fe.md.png" alt="图9"></p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/10b4b06fc512d9378a.md.png" alt="图10"></p>
+<p>###（2）在Andriod上，也可以通过点击文件右边三个点进行共享</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/11.md.jpg" alt="图11"></p>
+<p>不过，Andriod上只能访问Drive共享的文件夹，共享文件夹可以在Synology Drive 管理控制台的团队文件夹里面进行设置。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1218e1a1d35d6c66b9.md.png" alt="图12"></p>
+<h1 id="二、百度云备份"><a href="#二、百度云备份" class="headerlink" title="二、百度云备份"></a>二、百度云备份</h1><p>首先，打开Cloud Sync套件，添加云供应商，这里选择的是百度云。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/139f0ceb49a94a6c64.md.png" alt="图13"></p>
+<p>然后任务列表-&gt;新增，上面是NAS里面的文件夹，下面是百度云的文件夹，<br>尽量别选根目录，新建一个文件夹。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/14a7a4636ee444ac8a.md.png" alt="图14"></p>
+<p>然后在计划里面可以设置备份启动的时间，不然它一直在备份。</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/1561f8e26792360489.md.png" alt="图15"></p>
+<p>设置完成后在计划时间内它就会自动启动备份。</p>
+<p>效果展示：</p>
+<p><img src="https://nas.minkeren.com:8001/images/2021/01/08/16707c079eaab48669.md.png" alt="图16"></p>
+<hr>
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">cosenmin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/">http://example.com/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Cosen'blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85J1900/">蜗牛星际J1900</a><a class="post-meta__tags" href="/tags/%E9%BB%91%E7%BE%A4%E6%99%96NAS/">黑群晖NAS</a><a class="post-meta__tags" href="/tags/Synology-Drive/">Synology Drive</a><a class="post-meta__tags" href="/tags/%E7%99%BE%E5%BA%A6%E4%BA%91/">百度云</a></div><div class="post_share"><div class="social-share" data-image="https://cosenmin.gitee.io/cdn/blog/bg/default_cover1.bmp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/01/10/2021-1-10%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E4%BA%BA%E5%BD%B1%E9%99%A2%E7%AF%87/"><img class="prev-cover" src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover2.bmp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">黑群晖NAS之私人影院篇</div></div></a></div><div class="next-post pull-right"><a href="/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E5%9B%BE%E5%BA%93%E7%AF%87/"><img class="next-cover" src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover3.bmp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">黑群晖NAS之图库篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/01/10/2021-1-10%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E4%BA%BA%E5%BD%B1%E9%99%A2%E7%AF%87/" title="黑群晖NAS之私人影院篇"><img class="cover" src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover2.bmp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-10</div><div class="title">黑群晖NAS之私人影院篇</div></div></a></div><div><a href="/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E5%9B%BE%E5%BA%93%E7%AF%87/" title="黑群晖NAS之图库篇"><img class="cover" src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover3.bmp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-08</div><div class="title">黑群晖NAS之图库篇</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cosenmin.gitee.io/cdn/blog/avatar/shidiqi.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cosenmin</div><div class="author-info__description">回到过去拥抱你</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cosenmin" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:905142251@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客还在修建中...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E9%BB%91%E7%BE%A4%E6%99%96nas%E4%B8%BB%E6%9C%BA%E4%B8%8A%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E4%B8%AA%E7%A7%81%E6%9C%89%E4%BA%91%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%AD%98%E6%94%BE%E5%92%8C%E5%88%86%E4%BA%AB%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-number">1.0.1.</span> <span class="toc-text">在黑群晖nas主机上搭建自己的一个私有云，用于存放和分享文件。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="toc-number">1.1.</span> <span class="toc-text">更新日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">文章链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%A5%97%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">前置套件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%C2%B7-Synology-Drive"><span class="toc-number">1.3.1.</span> <span class="toc-text">· Synology Drive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%C2%B7-Synology-Drive-%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text">· Synology Drive 管理控制台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%C2%B7-Synology-Drive-ShareSync"><span class="toc-number">1.3.3.</span> <span class="toc-text">· Synology Drive ShareSync</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%C2%B7-CloudSync"><span class="toc-number">1.3.4.</span> <span class="toc-text">· CloudSync</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%91%E5%AD%98%E5%82%A8%E4%B8%8E%E5%88%86%E4%BA%AB"><span class="toc-number">2.</span> <span class="toc-text">一、云存储与分享</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-win%E5%92%8Cnas%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E5%85%B1%E4%BA%AB"><span class="toc-number">2.1.</span> <span class="toc-text">1.win和nas的文件夹共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Andriod%E5%92%8Cnas%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E5%85%B1%E4%BA%AB"><span class="toc-number">2.2.</span> <span class="toc-text">2.Andriod和nas的文件夹共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-nas%E7%9A%84%E5%A4%96%E9%93%BE%E5%85%B1%E4%BA%AB"><span class="toc-number">2.3.</span> <span class="toc-text">3.nas的外链共享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%9C%A8win%E4%B8%8A%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%9C%A8File-Station%E9%87%8C%E9%9D%A2%E5%8F%B3%E9%94%AE%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E5%85%B1%E4%BA%AB"><span class="toc-number">2.3.1.</span> <span class="toc-text">（1）在win上，可以直接在File Station里面右键文件或者文件夹，点击共享</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%99%BE%E5%BA%A6%E4%BA%91%E5%A4%87%E4%BB%BD"><span class="toc-number">3.</span> <span class="toc-text">二、百度云备份</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-number">3.1.</span> <span class="toc-text">常见问题解决</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/01/14/2021-1-14%20%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--DNF%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/" title="群晖NAS搭建游戏服务器--DNF篇"><img src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover2.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="群晖NAS搭建游戏服务器--DNF篇"/></a><div class="content"><a class="title" href="/2021/01/14/2021-1-14%20%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--DNF%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/" title="群晖NAS搭建游戏服务器--DNF篇">群晖NAS搭建游戏服务器--DNF篇</a><time datetime="2021-01-14T12:47:27.000Z" title="发表于 2021-01-14 20:47:27">2021-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/10/2021-1-10%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E4%BA%BA%E5%BD%B1%E9%99%A2%E7%AF%87/" title="黑群晖NAS之私人影院篇"><img src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover2.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="黑群晖NAS之私人影院篇"/></a><div class="content"><a class="title" href="/2021/01/10/2021-1-10%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E4%BA%BA%E5%BD%B1%E9%99%A2%E7%AF%87/" title="黑群晖NAS之私人影院篇">黑群晖NAS之私人影院篇</a><time datetime="2021-01-10T12:18:27.000Z" title="发表于 2021-01-10 20:18:27">2021-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/" title="黑群晖NAS之私有云篇"><img src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover1.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="黑群晖NAS之私有云篇"/></a><div class="content"><a class="title" href="/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E7%A7%81%E6%9C%89%E4%BA%91%E7%AF%87/" title="黑群晖NAS之私有云篇">黑群晖NAS之私有云篇</a><time datetime="2021-01-08T10:18:27.000Z" title="发表于 2021-01-08 18:18:27">2021-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E5%9B%BE%E5%BA%93%E7%AF%87/" title="黑群晖NAS之图库篇"><img src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover3.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="黑群晖NAS之图库篇"/></a><div class="content"><a class="title" href="/2021/01/08/2021-1-8%20%E9%BB%91%E7%BE%A4%E6%99%96NAS%E5%BA%94%E7%94%A8--%E5%9B%BE%E5%BA%93%E7%AF%87/" title="黑群晖NAS之图库篇">黑群晖NAS之图库篇</a><time datetime="2021-01-08T08:18:27.000Z" title="发表于 2021-01-08 16:18:27">2021-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/08/2021-1-8%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E5%9F%9F%E5%90%8D%E7%AF%87/" title="如何在Github上搭建个人博客--域名篇"><img src="https://cosenmin.gitee.io/cdn/blog/bg/default_cover1.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何在Github上搭建个人博客--域名篇"/></a><div class="content"><a class="title" href="/2021/01/08/2021-1-8%20%E5%A6%82%E4%BD%95%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2--%E5%9F%9F%E5%90%8D%E7%AF%87/" title="如何在Github上搭建个人博客--域名篇">如何在Github上搭建个人博客--域名篇</a><time datetime="2021-01-08T04:47:27.000Z" title="发表于 2021-01-08 12:47:27">2021-01-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By cosenmin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://blog-waline3-jlj9txumd-cosenmin.vercel.app/',
+      path: location.pathname,
+      visitor: false,
+      dark: 'html[data-theme="dark"]'
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Waline' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const loadWaline = () => {
+      Waline.Widget.RecentComments({
+        serverURL: 'https://blog-waline3-jlj9txumd-cosenmin.vercel.app/',
+        count: 6
+      }).then(res => {
+        const walineArray = res.comments.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.insertedAt,
+          }
+        })
+        saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+        generateHtml(walineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      }) 
+    }
+
+    if (typeof Waline === 'function') loadWaline() 
+    else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(loadWaline)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="Why,When,Where" data-fontsize="15px" data-random="false" async="async"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/shuoshuo/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
